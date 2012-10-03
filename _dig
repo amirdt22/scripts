@@ -1,0 +1,8 @@
+#!/bin/sh
+#description: does a DNS lookup with the short name
+#usage: _dig www #does a dns lookup for www.mathforum.org
+
+NAME=$1;
+shift
+REST=$@;
+dig +short ${NAME}.mathforum.org $REST

@@ -1,0 +1,7 @@
+#!/bin/bash
+#description: add a line to my weekly report
+#usage: wr 'I wasted time on ....'
+
+msg=$@
+#ssh amir@technetium.mathforum.org "echo '' | mail -s '$msg' amir+weeklyreport+`date +%Y.%V`@mathforum.org"
+ssh amir@technetium.mathforum.org "echo '' | mail -s '$msg' amir+weeklyreport@mathforum.org"

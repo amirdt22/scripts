@@ -1,0 +1,21 @@
+#!/bin/sh
+#description: reverse DNS lookup for our IP range
+#usage: _xdig 11 #does a reverse dns lookup for 144.118.94.11
+
+N=$1;
+shift
+REST=$@;
+
+ndots=`echo $N | sed -e 's/[0-9]//g' | wc -m`
+ndots=$(( $ndots - 1 ))
+
+PREFIX=144.118.94.
+if [ "$ndots" -eq 1 ]; then
+  PREFIX=144.118.
+elif [ "$ndots" -eq 2 ]; then
+  PREFIX=144.
+elif [ "$ndots" -eq 3 ]; then
+  PREFIX=
+fi
+
+dig +short -x ${PREFIX}${N} $REST
